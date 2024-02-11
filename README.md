@@ -5,6 +5,7 @@ It outlines the modules I've covered, the projects I've completed, and provides 
     Data exploration is the first step in the journey of extracting insights from raw datasets.
     Data exploration serves as the compass that guides data scientists through the vast sea of information.
     It involves getting to know the data intimately, understanding its structure, and uncovering valuable nuggets that lay hidden beneath the surface.
+    
     database used : https://ourworldindata.org/covid-deaths
     converted the csv file downloaded from this source into excel file and used it for data exploration.
 3) Data Cleaning
