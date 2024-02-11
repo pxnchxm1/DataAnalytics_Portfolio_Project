@@ -130,16 +130,17 @@ where d.continent is not null and v.new_vaccinations is not null
 order by 2,3;
 
 --USE CTE
---With PopVsVac (continent,location,date,new_vaccinations,rolling_people_vaccinated)
---as
---(
---select d.continent,d.location,d.date,d.population,v.new_vaccinations,
---sum(convert(bigint,v.new_vaccinations)) over (partition by d.location,d.date)
---as rolling_people_vaccinated from
---portfolio_10..CovidDeaths d Join portfolio_10..vaccinations v on
---d.location = v.location and d.date = v.date
---where d.continent is not null 
---)
+With PopVsVac (continent,location,date,population,new_vaccinations,rolling_people_vaccinated)
+as
+(
+select d.continent,d.location,d.date,d.population,v.new_vaccinations,
+sum(convert(bigint,v.new_vaccinations)) over (partition by d.location,d.date)
+as rolling_people_vaccinated from
+portfolio_10..CovidDeaths d Join portfolio_10..vaccinations v on
+d.location = v.location and d.date = v.date
+where d.continent is not null 
+)
+select * from PopVsVac;
 
 
 --Creating view to store data for visualization
